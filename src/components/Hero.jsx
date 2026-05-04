@@ -4,12 +4,12 @@ import { ArrowRight, Zap } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-40">
       {/* Dynamic Background Image */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/hero-bg.jpg" 
-          alt="Premium Karting Facility" 
+        <img
+          src="/hero-bg.jpg"
+          alt="Premium Karting Facility"
           className="w-full h-full object-cover object-center scale-105 animate-float opacity-100"
           style={{ animationDuration: '30s' }}
         />
@@ -19,8 +19,8 @@ const Hero = () => {
       </div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 w-full flex flex-col items-start justify-center">
-        
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -30,7 +30,7 @@ const Hero = () => {
           <span className="text-sm font-bold tracking-widest uppercase text-brand-navy">Coming Soon to Phoenix, AZ</span>
         </motion.div>
 
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -43,7 +43,7 @@ const Hero = () => {
           <span className="block text-brand-gray">OF RACING.</span>
         </motion.h1>
 
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -52,12 +52,12 @@ const Hero = () => {
           More than just an outdoor track. We’re building the ultimate motorsport playground in one of the fastest growing cities in America.
         </motion.p>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <a 
+          <a
             href="#waitlist"
             className="inline-flex items-center justify-center gap-4 px-10 py-5 rounded-full bg-brand-navy text-white font-black text-xl hover:scale-105 active:scale-95 transition-all shadow-[0_10px_30px_rgba(27,58,107,0.3)] hover:shadow-[0_15px_40px_rgba(27,58,107,0.5)] group"
           >

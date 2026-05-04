@@ -8,30 +8,34 @@ const Experience = () => {
       title: "Arrive & Drive", 
       desc: "10-min sessions", 
       sub: "Adults and Kids",
-      icon: <Flag size={40} className="text-brand-maroon" />
+      icon: <Flag size={48} className="text-white mb-4 drop-shadow-md group-hover:scale-125 group-hover:text-brand-maroon transition-all duration-500" />,
+      bg: "/offering-arrive.png"
     },
     { 
       title: "Clinics & Academy", 
       desc: "Professional Training", 
       sub: "Kids, Teens, Adults",
-      icon: <Shield size={40} className="text-brand-navy" />
+      icon: <Shield size={48} className="text-white mb-4 drop-shadow-md group-hover:scale-125 group-hover:text-brand-maroon transition-all duration-500" />,
+      bg: "/offering-academy.png"
     },
     { 
       title: "Races", 
       desc: "Sprint & Endurance", 
       sub: "Competitive Leagues",
-      icon: <Trophy size={40} className="text-brand-maroon" />
+      icon: <Trophy size={48} className="text-white mb-4 drop-shadow-md group-hover:scale-125 group-hover:text-brand-maroon transition-all duration-500" />,
+      bg: "/offering-races.png"
     },
     { 
-      title: "Membership & Storage", 
-      desc: "On-site facilities", 
+      title: "Membership", 
+      desc: "On-site Storage", 
       sub: "For Kart Owners",
-      icon: <Wrench size={40} className="text-brand-navy" />
+      icon: <Wrench size={48} className="text-white mb-4 drop-shadow-md group-hover:scale-125 group-hover:text-brand-maroon transition-all duration-500" />,
+      bg: "/offering-membership.png"
     },
   ];
 
   return (
-    <section id="experience" className="py-24 md:py-32 relative z-10 bg-brand-offwhite">
+    <section id="experience" className="py-24 md:py-32 relative z-10 bg-brand-offwhite overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="text-center mb-20">
           <motion.h2 
@@ -47,26 +51,41 @@ const Experience = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 mb-20 max-w-5xl mx-auto">
           {cards.map((card, index) => (
             <motion.div 
               key={index} 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-3xl p-10 flex flex-col items-center justify-center text-center relative border border-brand-gray/10 shadow-[0_10px_40px_rgba(27,58,107,0.05)] hover:shadow-[0_20px_50px_rgba(27,58,107,0.1)] transition-all group overflow-hidden"
+              transition={{ delay: index * 0.1, type: "spring", stiffness: 100 }}
+              className="relative w-full max-w-[400px] mx-auto aspect-square rounded-full overflow-hidden flex flex-col items-center justify-center text-center group cursor-pointer shadow-2xl hover:shadow-[0_20px_50px_rgba(27,58,107,0.3)] hover:-translate-y-4 transition-all duration-500 ring-8 ring-white"
             >
-              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-brand-navy to-brand-maroon scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+              {/* Background Graphic */}
+              <img 
+                src={card.bg} 
+                alt={card.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
               
-              <div className="mb-6 bg-brand-offwhite w-24 h-24 rounded-full flex items-center justify-center shadow-inner">
+              {/* Dark Overlay that lightens slightly and shifts color on hover */}
+              <div className="absolute inset-0 bg-brand-navy/80 group-hover:bg-brand-navy/50 transition-colors duration-500"></div>
+
+              {/* Content */}
+              <div className="relative z-10 p-8 flex flex-col items-center justify-center h-full w-full">
                 {card.icon}
+                <h3 className="text-3xl font-black mb-2 text-white uppercase tracking-wide drop-shadow-lg group-hover:-translate-y-2 transition-transform duration-500">{card.title}</h3>
+                
+                {/* Expanding Content on Hover */}
+                <div className="h-0 overflow-hidden group-hover:h-20 transition-all duration-500 ease-in-out flex flex-col justify-start">
+                  <div className="text-xl font-bold text-white/90 mb-1 drop-shadow-md translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                    {card.desc}
+                  </div>
+                  <div className="text-sm text-brand-offwhite font-semibold uppercase tracking-widest drop-shadow-md translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-150">
+                    {card.sub}
+                  </div>
+                </div>
               </div>
-              <h3 className="text-3xl font-black mb-2 text-brand-navy uppercase tracking-wide">{card.title}</h3>
-              <div className="text-xl font-bold text-brand-gray mb-2">
-                {card.desc}
-              </div>
-              <div className="text-md text-brand-maroon font-semibold uppercase tracking-widest">{card.sub}</div>
             </motion.div>
           ))}
         </div>
