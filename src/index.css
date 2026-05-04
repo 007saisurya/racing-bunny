@@ -4,48 +4,39 @@
 @theme {
   --font-sans: 'Montserrat', sans-serif;
   
-  --color-brand-navy: #0B0A11;
-  --color-brand-navy-light: #161522;
-  --color-brand-green: #00E676;
-  --color-brand-green-light: #69F0AE;
-  --color-brand-blue: #00B0FF;
-  --color-brand-blue-light: #80D8FF;
-  
-  --color-neon-blue: #00E5FF;
-  --color-neon-purple: #2979FF;
+  --color-brand-navy: #1b3a6b;
+  --color-brand-maroon: #6b2033;
+  --color-brand-gray: #2b2b2b;
+  --color-brand-offwhite: #f0ede8;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: var(--color-brand-navy);
-    color: white;
+    background-color: var(--color-brand-offwhite);
+    color: var(--color-brand-gray);
   }
   
   body {
-    @apply font-sans antialiased bg-brand-navy text-white selection:bg-brand-green selection:text-white;
-    background-image: 
-      radial-gradient(at 0% 0%, rgba(41, 121, 255, 0.15) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(0, 230, 118, 0.15) 0px, transparent 50%);
-    background-attachment: fixed;
+    @apply font-sans antialiased bg-brand-offwhite text-brand-gray selection:bg-brand-maroon selection:text-white;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-brand-navy-light/60 backdrop-blur-xl border border-white/10;
+    @apply bg-white/80 backdrop-blur-xl border border-brand-gray/10 shadow-lg;
   }
   
   .glass-card {
-    @apply bg-brand-navy-light/40 backdrop-blur-md border border-white/10 rounded-3xl hover:border-brand-green/50 transition-all duration-300;
+    @apply bg-white/60 backdrop-blur-md border border-brand-gray/10 rounded-3xl hover:border-brand-maroon/30 transition-all duration-300 shadow-xl;
   }
   
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-neon-blue to-neon-purple;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-navy to-brand-maroon;
   }
   
   .neon-box {
-    box-shadow: 0 0 20px rgba(0, 176, 255, 0.2), inset 0 0 10px rgba(0, 176, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(27, 58, 107, 0.1);
   }
 }
 
@@ -61,8 +52,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 15px rgba(0, 230, 118, 0.3); }
-  50% { box-shadow: 0 0 25px rgba(0, 230, 118, 0.6); }
+  0%, 100% { box-shadow: 0 0 15px rgba(27, 58, 107, 0.1); }
+  50% { box-shadow: 0 0 25px rgba(27, 58, 107, 0.2); }
 }
 
 .animate-pulse-glow {

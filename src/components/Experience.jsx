@@ -1,50 +1,72 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Flag, Trophy, Shield, Wrench } from 'lucide-react';
 
 const Experience = () => {
   const cards = [
-    { title: "High-Speed Circuit", stat: "0.75", label: "Miles" },
-    { title: "Pro Karts", stat: "35", label: "Machines" },
-    { title: "Sprawling Campus", stat: "12", label: "Acres" },
+    { 
+      title: "Arrive & Drive", 
+      desc: "10-min sessions", 
+      sub: "Adults and Kids",
+      icon: <Flag size={40} className="text-brand-maroon" />
+    },
+    { 
+      title: "Clinics & Academy", 
+      desc: "Professional Training", 
+      sub: "Kids, Teens, Adults",
+      icon: <Shield size={40} className="text-brand-navy" />
+    },
+    { 
+      title: "Races", 
+      desc: "Sprint & Endurance", 
+      sub: "Competitive Leagues",
+      icon: <Trophy size={40} className="text-brand-maroon" />
+    },
+    { 
+      title: "Membership & Storage", 
+      desc: "On-site facilities", 
+      sub: "For Kart Owners",
+      icon: <Wrench size={40} className="text-brand-navy" />
+    },
   ];
 
   return (
-    <section id="experience" className="py-24 md:py-32 relative z-10">
+    <section id="experience" className="py-24 md:py-32 relative z-10 bg-brand-offwhite">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="text-center mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-7xl font-black mb-6 text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.2)] uppercase tracking-tight"
+            className="text-5xl md:text-7xl font-black mb-6 text-brand-navy uppercase tracking-tight"
           >
-            The Ecosystem
+            Our Offerings
           </motion.h2>
-          <p className="text-2xl text-neon-blue max-w-2xl mx-auto font-medium tracking-wide">
-            DESIGNED FOR EVERY LEVEL OF ENTHUSIAST
+          <p className="text-2xl text-brand-maroon max-w-2xl mx-auto font-medium tracking-wide">
+            From first-time drivers to seasoned enthusiasts
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 max-w-5xl mx-auto">
           {cards.map((card, index) => (
             <motion.div 
               key={index} 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              className="glass p-1 relative overflow-hidden group rounded-[2rem] animate-pulse-glow"
-              style={{ animationDelay: `${index * 0.5}s` }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-white rounded-3xl p-10 flex flex-col items-center justify-center text-center relative border border-brand-gray/10 shadow-[0_10px_40px_rgba(27,58,107,0.05)] hover:shadow-[0_20px_50px_rgba(27,58,107,0.1)] transition-all group overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/20 to-brand-green/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-brand-navy to-brand-maroon scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
               
-              <div className="bg-brand-navy-light/90 h-full rounded-[1.8rem] p-10 flex flex-col items-center justify-center text-center relative z-10 border border-white/5">
-                <h3 className="text-2xl font-bold mb-8 text-white/80 uppercase tracking-widest">{card.title}</h3>
-                <div className="text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-white/30 mb-2 drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
-                  {card.stat}
-                </div>
-                <div className="text-xl text-brand-green font-black uppercase tracking-[0.2em]">{card.label}</div>
+              <div className="mb-6 bg-brand-offwhite w-24 h-24 rounded-full flex items-center justify-center shadow-inner">
+                {card.icon}
               </div>
+              <h3 className="text-3xl font-black mb-2 text-brand-navy uppercase tracking-wide">{card.title}</h3>
+              <div className="text-xl font-bold text-brand-gray mb-2">
+                {card.desc}
+              </div>
+              <div className="text-md text-brand-maroon font-semibold uppercase tracking-widest">{card.sub}</div>
             </motion.div>
           ))}
         </div>

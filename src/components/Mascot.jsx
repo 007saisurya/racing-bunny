@@ -29,11 +29,11 @@ const Mascot = () => {
           Hop on the Waitlist! 🏁
         </motion.div>
 
-        {/* Mascot Image - Flipped left, using screen blend mode for dark bg */}
+        {/* Mascot Image - Flipped left, using multiply blend mode for white bg */}
         <img 
-          src="/mascot-dark.png" 
+          src="/mascot-new.png" 
           alt="Racing Bunny Mascot" 
-          className="w-48 h-auto object-contain transform origin-bottom hover:scale-105 transition-transform pointer-events-auto cursor-pointer scale-x-[-1] mix-blend-screen opacity-90"
+          className="w-48 h-auto object-contain transform origin-bottom hover:scale-105 transition-transform pointer-events-auto cursor-pointer mix-blend-multiply opacity-90"
           onClick={() => {
             document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' });
           }}

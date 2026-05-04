@@ -16,24 +16,35 @@ const Navbar = () => {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'bg-brand-navy/80 backdrop-blur-xl border-b border-white/10 py-4 shadow-[0_4px_30px_rgba(0,0,0,0.5)]' : 'bg-transparent py-6'
+        isScrolled ? 'bg-brand-navy border-b border-brand-gray/10 py-4 shadow-xl' : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
-        <a href="#" className="text-2xl font-black tracking-tight text-white flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-lg bg-brand-blue flex items-center justify-center shadow-[0_0_15px_rgba(0,176,255,0.6)] group-hover:shadow-[0_0_25px_rgba(0,176,255,0.9)] transition-all">
+        <a href="#" className="flex items-center gap-3 group">
+          <img 
+            src="/logo-icon.png" 
+            alt="The Karting Club" 
+            className="h-32 w-auto object-contain transition-transform group-hover:scale-105"
+            onError={(e) => {
+              e.target.style.display = 'none';
+              e.target.nextSibling.style.display = 'flex';
+            }}
+          />
+          <div className="hidden w-10 h-10 rounded-lg bg-brand-maroon items-center justify-center shadow-lg group-hover:shadow-xl transition-all">
             <span className="text-white text-sm font-black">TKC</span>
           </div>
-          <span className="drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] group-hover:text-brand-green transition-colors duration-300">The Karting Club</span>
+          <span className={`text-2xl font-black tracking-tight transition-colors duration-300 ${isScrolled ? 'text-white' : 'text-brand-navy'}`}>
+            The Karting Club
+          </span>
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-10">
+        <nav className={`hidden lg:flex items-center gap-10 ${isScrolled ? 'text-white/70' : 'text-brand-navy/70'}`}>
           {['Experience', 'Track'].map((item) => (
             <a 
               key={item} 
               href={`#${item.toLowerCase()}`}
-              className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] transition-all"
+              className="text-sm font-bold uppercase tracking-widest hover:text-brand-maroon transition-colors"
             >
               {item}
             </a>
@@ -44,7 +55,11 @@ const Navbar = () => {
         <div className="hidden lg:block">
           <a 
             href="#waitlist"
-            className="bg-transparent border-2 border-brand-blue hover:bg-brand-blue text-white px-8 py-2.5 rounded-full text-sm font-bold uppercase tracking-widest transition-all shadow-[0_0_15px_rgba(0,176,255,0.3)] hover:shadow-[0_0_25px_rgba(0,176,255,0.6)] hover:scale-105"
+            className={`px-8 py-2.5 rounded-full text-sm font-bold uppercase tracking-widest transition-all hover:scale-105 shadow-lg ${
+              isScrolled 
+                ? 'bg-brand-offwhite text-brand-navy hover:bg-white' 
+                : 'bg-brand-navy text-white hover:bg-brand-maroon'
+            }`}
           >
             Join Waitlist
           </a>
@@ -52,7 +67,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Toggle */}
         <button 
-          className="lg:hidden text-white p-2 hover:text-brand-maroon transition-colors"
+          className={`lg:hidden p-2 hover:text-brand-maroon transition-colors ${isScrolled ? 'text-white' : 'text-brand-navy'}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -61,7 +76,7 @@ const Navbar = () => {
 
       {/* Mobile Nav */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-brand-navy/95 backdrop-blur-xl border-b border-white/10 flex flex-col p-6 gap-6 shadow-2xl">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-brand-navy border-b border-brand-gray/10 flex flex-col p-6 gap-6 shadow-2xl">
           {['Experience', 'Track'].map((item) => (
             <a 
               key={item} 
@@ -75,7 +90,7 @@ const Navbar = () => {
           <a 
             href="#waitlist"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="bg-brand-maroon text-white px-6 py-4 rounded-full text-center font-bold uppercase tracking-widest shadow-[0_0_20px_rgba(255,16,83,0.5)] mt-4"
+            className="bg-brand-maroon text-white px-6 py-4 rounded-full text-center font-bold uppercase tracking-widest shadow-lg mt-4"
           >
             Join Waitlist
           </a>

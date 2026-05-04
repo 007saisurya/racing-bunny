@@ -26,18 +26,18 @@ const MouseTrail = () => {
     <>
       {/* The main sharp dot */}
       <motion.div
-        className="fixed top-0 left-0 w-3 h-3 bg-brand-green rounded-full pointer-events-none z-[9999] mix-blend-screen"
+        className="fixed top-0 left-0 w-3 h-3 bg-brand-maroon rounded-full pointer-events-none z-[9999]"
         style={{
           x: cursorX,
           y: cursorY,
           translateX: '-50%',
           translateY: '-50%',
-          boxShadow: '0 0 10px rgba(0,230,118,1)'
+          boxShadow: '0 0 10px rgba(107,32,51,0.5)'
         }}
       />
-      {/* The larger, softer trailing glow (water drop feel) */}
+      {/* The larger, softer trailing glow */}
       <motion.div
-        className="fixed top-0 left-0 w-16 h-16 bg-brand-blue/30 rounded-full pointer-events-none z-[9998] blur-[8px] mix-blend-screen"
+        className="fixed top-0 left-0 w-16 h-16 bg-brand-navy/20 rounded-full pointer-events-none z-[9998] blur-[8px]"
         style={{
           x: cursorX,
           y: cursorY,
