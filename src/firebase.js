@@ -31,7 +31,7 @@ export const saveEmailToWaitlist = async (email) => {
     console.log("Document written with ID: ", docRef.id);
     return true;
   } catch (e) {
-    console.error("Error adding document: ", e);
+    console.error("Firebase error: ", e);
     return false;
   }
 };

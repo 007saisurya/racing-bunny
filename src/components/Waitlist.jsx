@@ -6,17 +6,23 @@ import { saveEmailToWaitlist } from '../firebase';
 const Waitlist = () => {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email) {
-      const success = await saveEmailToWaitlist(email);
-      if (success) {
-        setSubmitted(true);
-        setTimeout(() => setSubmitted(false), 5000);
-        setEmail('');
-      } else {
-        alert("There was an error saving your email. Have you set up your Firebase keys yet?");
+    if (email && !isSubmitting) {
+      setIsSubmitting(true);
+      try {
+        const success = await saveEmailToWaitlist(email);
+        if (success) {
+          setSubmitted(true);
+          setTimeout(() => setSubmitted(false), 5000);
+          setEmail('');
+        } else {
+          alert("There was an error saving your email. Please check the browser console for details.");
+        }
+      } finally {
+        setIsSubmitting(false);
       }
     }
   };
@@ -72,10 +78,11 @@ const Waitlist = () => {
               </div>
               <button 
                 type="submit"
-                className="w-full sm:w-auto px-8 py-5 rounded-full bg-gradient-to-r from-brand-navy to-brand-maroon text-white font-black text-lg uppercase tracking-wider hover:scale-105 active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2"
+                disabled={isSubmitting}
+                className="w-full sm:w-auto px-8 py-5 rounded-full bg-gradient-to-r from-brand-navy to-brand-maroon text-white font-black text-lg uppercase tracking-wider hover:scale-105 active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Join Waitlist
-                <ArrowRight size={20} />
+                {isSubmitting ? "Submitting..." : "Join Waitlist"}
+                {!isSubmitting && <ArrowRight size={20} />}
               </button>
             </form>
           )}
